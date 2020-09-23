@@ -3,6 +3,7 @@
   <CountButton/>
   <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
   <XInput v-model="value" />
+  input ---- {{value}}
 </template>
 
 <script>
