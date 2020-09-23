@@ -8,17 +8,18 @@
     export default {
         name: "XInput",
         props: {
-            modalValue: {
+            modelValue: {
                 type: [Number, String],
             },
         },
-        setup(props){
+        emits: ['update:modelValue'],
+        setup(props, {emit}){
             let value = ref(null);
             function handleInput(e) {
                 value.value = e.target.value;
-                this.$emit('modalValue:update', value.value);
+                emit('update:modelValue',  value.value)
             }
-            watch(() => props.modalValue, function (newValue, oldValue) {
+            watch(() => props.modelValue, function (newValue, oldValue) {
                 console.log(newValue, oldValue)
             })
             return {
