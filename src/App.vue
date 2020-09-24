@@ -1,11 +1,13 @@
 <template>
-  <div class="main-app" v-if="visible">
-    <div class="main-app-loading"></div>
-  </div>
-  <div class="main-app" :style="mainStyle" v-else>
-    <img alt="Vue logo" src="/logo.png" />
-    <HelloWorld msg="Hello Vue 3.0 + Vite" />
-  </div>
+  <transition-group name="fade">
+    <div class="main-app" v-if="visible">
+      <div class="main-app-loading"></div>
+    </div>
+    <div class="main-app" :style="mainStyle" v-else>
+      <img alt="Vue logo" src="/logo.png" />
+      <HelloWorld msg="Hello Vue 3.0 + Vite" />
+    </div>
+  </transition-group>
 </template>
 
 <script>
@@ -24,8 +26,10 @@ export default {
     img.src = './bg.webp';
     img.onload = function () {
       console.log('加载完成');
-      visible.value = false;
-      mainStyle.value = 'background-image: url("./bg.webp");';
+      setTimeout(() => {
+        visible.value = false;
+        mainStyle.value = 'background-image: url("./bg.webp");';
+      }, 500)
     }
     return {
       mainStyle,
@@ -63,5 +67,18 @@ export default {
     to{
       transform: rotate(360deg);
     }
+  }
+  .fade-leave-to{
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  .fade-enter-from{
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 1s linear;
+    position: absolute;
   }
 </style>
