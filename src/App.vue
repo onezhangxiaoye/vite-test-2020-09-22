@@ -17,10 +17,10 @@ export default {
   setup(){
     let mainStyle = ref('');
     let img = new Image();
-    img.src = '/bg.webp';
+    img.src = '../public/bg.webp';
     img.onload = function () {
       console.log('加载完成');
-      mainStyle.value = 'background-image: url("/bg.webp");';
+      mainStyle.value = 'background-image: url("../public/bg.webp");';
     }
     return {
       mainStyle,
