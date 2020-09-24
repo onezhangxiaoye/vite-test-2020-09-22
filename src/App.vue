@@ -1,6 +1,6 @@
 <template>
   <div class="main-app" :style="mainStyle">
-    <img alt="Vue logo" src="../public/assets/logo.png" />
+    <img alt="Vue logo" src="../public/logo.png" />
     <HelloWorld msg="Hello Vue 3.0 + Vite" />
   </div>
 </template>
@@ -17,10 +17,10 @@ export default {
   setup(){
     let mainStyle = ref('');
     let img = new Image();
-    img.src = '/assets/bg.webp';
+    img.src = '/bg.webp';
     img.onload = function () {
       console.log('加载完成');
-      mainStyle.value = 'background-image: url("/assets/bg.webp");';
+      mainStyle.value = 'background-image: url("/bg.webp");';
     }
     return {
       mainStyle,
