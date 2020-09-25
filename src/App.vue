@@ -4,21 +4,22 @@
       <div class="main-app-loading"></div>
     </div>
     <div class="main-app" :style="mainStyle" v-else>
-      <img alt="Vue logo" src="/logo.png" />
-      <HelloWorld msg="Hello Vue 3.0 + Vite" />
+        <div>
+            <h2>
+                <router-link to="/">Home</router-link>|
+                <router-link to="/page">Page</router-link>
+            </h2>
+            <router-view/>
+        </div>
     </div>
   </transition-group>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import {ref} from "vue";
+  import {ref} from "vue";
 
-export default {
+  export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   setup(){
     let mainStyle = ref('');
     let visible = ref(true);
